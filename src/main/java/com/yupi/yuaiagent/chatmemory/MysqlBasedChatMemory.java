@@ -67,38 +67,6 @@ public class MysqlBasedChatMemory implements ChatMemory {
         }
         conversationMapper.updateById(conversation);
     }
-//@Override
-//public void add(String conversationId, List<Message> messages) {
-//    //1.根据conversationId查出对应记录
-//    Conversation conversation = conversationMapper.selectOne(
-//            new QueryWrapper<Conversation>()
-//                    .eq("conversationId", conversationId));
-//    //数据库信息
-//    String historyMessage = conversation.getMessage();
-//    //用户的Message
-//    Message message = messages.getFirst();
-//    if(historyMessage == null){
-//        ArrayList<Message> dbMessages = new ArrayList<>();
-//        //用户信息
-//        if(message.getMessageType() == MessageType.USER){
-//            UserMessage userMessage = (UserMessage) message;
-//            dbMessages.add(userMessage);
-//        }else {
-//            //AI信息
-//            AssistantMessage assistantMessage = (AssistantMessage) message;
-//            dbMessages.add(assistantMessage);
-//        }
-//        JSONArray array = JSONUtil.parseArray(dbMessages);
-//        conversation.setMessage(array.toStringPretty());
-//    }else {
-//        List<Message> dbMessages = JSONUtil.toList(JSONUtil.parseArray(historyMessage), Message.class);
-//        dbMessages.add(message);
-//        String jsonStr = JSONUtil.toJsonStr(dbMessages);
-//        conversation.setMessage(jsonStr);
-//    }
-//    conversationMapper.updateById(conversation);
-//}
-
     @Override
     public List<Message> get(String conversationId, int lastN) {
         Conversation conversation = conversationMapper
